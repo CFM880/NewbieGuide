@@ -37,7 +37,7 @@ import java.util.List;
  * guide的控制器，可以通过该类控制引导层的显示与回退，或者重置label
  */
 public class Controller {
-
+    private static final String TAG = "guide.core.Controller";
     private static final String LISTENER_FRAGMENT = "listener_fragment";
 
     private Activity activity;
@@ -112,7 +112,8 @@ public class Controller {
             @Override
             public void run() {
                 if (guidePages == null || guidePages.size() == 0) {
-                    throw new IllegalStateException("there is no guide to show!! Please add at least one Page.");
+                    Log.e(TAG,"there is no guide to show!! Please add at least one Page.");
+                    return;
                 }
                 current = 0;
                 showGuidePage();
